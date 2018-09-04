@@ -37,13 +37,11 @@ class WooCommerce_Gateway_Genoapay_Request {
 			), home_url( '/' ) );
 
 			$line_items_desc = array();
-			$line_items_price = array();
 			if ( count( $order->get_items() ) > 0 ) {
 				foreach ( $order->get_items() as $item ) {
 					$product = $item->get_product();
 					if ( $item->is_type( 'line_item' ) && ( $product ) ) {
 						$line_items_desc[] = $item->get_quantity() . ' x ' . $product->get_name();
-						$line_items_price[] = $item->get_total();
 					}
 				}
 			}
@@ -66,7 +64,7 @@ class WooCommerce_Gateway_Genoapay_Request {
 				),
 				'product' => array(
 					'description' => implode( ', ',$line_items_desc ),
-					'price' => array_sum( $line_items_price ),
+					'price' => $order->get_total(),
 					'currencyCode' => $order->get_currency(),
 					'reference' => $transaction_id,
 				),

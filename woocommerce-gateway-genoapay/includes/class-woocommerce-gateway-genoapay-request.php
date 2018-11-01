@@ -63,7 +63,7 @@ class WooCommerce_Gateway_Genoapay_Request {
 					),
 				),
 				'product' => array(
-					'description' => preg_replace('/"/', '/\"/', implode( ', ', $line_items_desc)),
+					'description' => preg_replace('/"/', '\"', implode( ', ', $line_items_desc)),
 					'price' => $order->get_total(),
 					'currencyCode' => $order->get_currency(),
 					'reference' => $transaction_id,

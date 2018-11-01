@@ -50,10 +50,10 @@ if ( ! class_exists( 'Genoapay' ) ) {
 		public static function woocommerce_template_genoapay_details() {
 			global $product;
 			$genoapay_gateway = new WooCommerce_Gateway_Genoapay();
-			if ( $genoapay_gateway->validate_currency() && ! $genoapay_gateway->validate_min_max_amount() ) :
+			if ( $genoapay_gateway->validate_currency() ) :
 			?>
 				<div class="genoapay-product-payment-details">
-					<div class="genoapay-message">or 10 Interest free payments from $<?php echo number_format( (float) self::round_up( $product->get_price() / 10, 2), 2, '.', ''); ?></div>
+					<div class="genoapay-message">or 10 Interest free payments from $<?php echo number_format( (float) self::round_up( $product->get_price() / 10, 2), 2, '.', ''); ?> on orders over $<?php echo number_format($genoapay_gateway->getMinimumAmount()); ?></div>
 					<div class="genoapay-logo">
 						<img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/genoapay-logo-white.png';?>" alt="Genoapay logo" itemprop="logo">
 						<a href="https://www.genoapay.com/" target="_blank"><i>Learn More</i></a>
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Genoapay' ) ) {
 		}
 
 		/**
-		 * Alwasy round up to 2 decimal places
+		 * Always round up to 2 decimal places
 		 * @param  Integer $value    
 		 * @param  Integer $precision
 		 * @return string

@@ -109,6 +109,10 @@ class WooCommerce_Gateway_Genoapay extends WC_Payment_Gateway {
 		// Hooks.
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
 	}
+	
+	public function getMinimumAmount() {
+		return $this->minimum_amount;
+	}
 
 	/**
 	 * payment_scripts function.

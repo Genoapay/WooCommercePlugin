@@ -53,10 +53,14 @@ if ( ! class_exists( 'Genoapay' ) ) {
 			if ( $genoapay_gateway->validate_currency() ) :
 			?>
 				<div class="genoapay-product-payment-details">
-					<div class="genoapay-message">or 10 Interest free payments from $<?php echo number_format( (float) self::round_up( $product->get_price() / 10, 2), 2, '.', ''); ?> on orders over $<?php echo number_format($genoapay_gateway->getMinimumAmount()); ?></div>
-					<div class="genoapay-logo">
-						<img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/genoapay-logo-white.png';?>" alt="Genoapay logo" itemprop="logo">
-						<a href="https://www.genoapay.com/" target="_blank"><i>Learn More</i></a>
+					<div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product->get_price() / 10, 2), 2, '.', ''); ?></b>
+
+                        <?php if ($product->get_price() < $genoapay_gateway->getMinimumAmount()) { ?>
+							on orders over $<?php echo number_format($genoapay_gateway->getMinimumAmount()); ?>
+                        <?php } ?>
+
+						<img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/genoapay-logo.png';?>" alt="Genoapay logo" itemprop="logo">
+						<a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
 					</div>
 				</div>
 			<?php

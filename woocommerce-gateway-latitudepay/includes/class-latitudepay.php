@@ -50,19 +50,24 @@ if ( ! class_exists('LatitudePay') ) {
 		public static function woocommerce_template_genoapay_details() {
 			global $product;
 			$genoapay_gateway = new WooCommerce_Gateway_Genoapay();
+            $minimum_amount = $genoapay_gateway->getMinimumAmount();
+            $maximum_amount = $genoapay_gateway->getMaximumAmount();
+            $product_price = $product->get_price();
 			if ( $genoapay_gateway->validate_currency() ) :
 			?>
-				<div class="genoapay-product-payment-details">
-					<div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product->get_price() / 10, 2), 2, '.', ''); ?></b>
-
-                        <?php if ($product->get_price() < $genoapay_gateway->getMinimumAmount()) { ?>
-							on orders over $<?php echo number_format($genoapay_gateway->getMinimumAmount()); ?>
-                        <?php } ?>
-
-						with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
-						<a href="https://latitudepay.com?src=woo" target="_blank"><i>Learn more</i></a>
-					</div>
-				</div>
+                <div class="genoapay-product-payment-details">
+                    <?php if ($product_price < $minimum_amount || $product_price > $maximum_amount) { ?>
+                        <div class="genoapay-message">Installments available between <b>$<?php echo number_format($minimum_amount); ?></b> - <b>$<?php echo number_format($maximum_amount); ?></b>
+                            with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
+                            <a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product_price / 10, 2), 2, '.', ''); ?></b>
+                            with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
+                            <a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+                        </div>
+                    <?php } ?>
+                </div>
 			<?php
 			endif;
 		}

@@ -114,6 +114,10 @@ class WooCommerce_Gateway_Genoapay extends WC_Payment_Gateway {
 		return $this->minimum_amount;
 	}
 
+    public function getMaximumAmount() {
+        return $this->maximum_amount;
+    }
+
 	/**
 	 * payment_scripts function.
 	 *

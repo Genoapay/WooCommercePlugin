@@ -50,24 +50,24 @@ if ( ! class_exists('LatitudePay') ) {
 		public static function woocommerce_template_genoapay_details() {
 			global $product;
 			$genoapay_gateway = new WooCommerce_Gateway_Genoapay();
-            $minimum_amount = $genoapay_gateway->getMinimumAmount();
-            $maximum_amount = $genoapay_gateway->getMaximumAmount();
-            $product_price = $product->get_price();
+			$minimum_amount = $genoapay_gateway->getMinimumAmount();
+			$maximum_amount = $genoapay_gateway->getMaximumAmount();
+			$product_price = $product->get_price();
 			if ( $genoapay_gateway->validate_currency() ) :
 			?>
-                <div class="genoapay-product-payment-details">
-                    <?php if ($product_price < $minimum_amount || $product_price > $maximum_amount) { ?>
-                        <div class="genoapay-message">Installments available between <b>$<?php echo number_format($minimum_amount); ?></b> - <b>$<?php echo number_format($maximum_amount); ?></b>
-                            with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
-                            <a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
-                        </div>
-                    <?php } else { ?>
-                        <div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product_price / 10, 2), 2, '.', ''); ?></b>
-                            with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
-                            <a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
-                        </div>
-                    <?php } ?>
-                </div>
+				<div class="genoapay-product-payment-details">
+					<?php if ($product_price < $minimum_amount || $product_price > $maximum_amount) { ?>
+						<div class="genoapay-message">Installments available between <b>$<?php echo number_format($minimum_amount); ?></b> - <b>$<?php echo number_format($maximum_amount); ?></b>
+							with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
+							<a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+						</div>
+					<?php } else { ?>
+						<div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product_price / 10, 2), 2, '.', ''); ?></b>
+							with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
+							<a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+						</div>
+					<?php } ?>
+				</div>
 			<?php
 			endif;
 		}
@@ -79,8 +79,8 @@ if ( ! class_exists('LatitudePay') ) {
 		 * @return string
 		 */
 		public static function round_up ( $value, $precision ) { 
-		    $pow = pow ( 10, $precision ); 
-		    return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow; 
+			$pow = pow ( 10, $precision );
+			return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow;
 		}
 
 		/**

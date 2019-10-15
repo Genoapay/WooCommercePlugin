@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Payment LatitudePay gateway
  * Plugin URI: https://www.futurelab.co.nz
  * Description: A payment gateway for LatitudePay
- * Version: 1.0
+ * Version: 1.1
  * Author: FutureLab, Genoapay
  * Author URI: https://www.futurelab.co.nz
  * Text Domain: wc-genoapay
@@ -22,7 +22,7 @@ if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins',
 	return;
 }
 
-define( 'GENOAPAY_VERSION', '1.0' );
+define( 'GENOAPAY_VERSION', '1.1' );
 define( 'GENOAPAY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GENOAPAY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

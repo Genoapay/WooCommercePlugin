@@ -114,6 +114,10 @@ class WooCommerce_Gateway_Genoapay extends WC_Payment_Gateway {
 		return $this->minimum_amount;
 	}
 
+	public function getMaximumAmount() {
+		return $this->maximum_amount;
+	}
+
 	/**
 	 * payment_scripts function.
 	 *
@@ -176,13 +180,13 @@ class WooCommerce_Gateway_Genoapay extends WC_Payment_Gateway {
 				'default'     => 'no',
 				'description' => sprintf( __( 'Log Genoapay events, such as IPN requests, inside %s', 'wc-genoapay' ), '<code>' . WC_Log_Handler_File::get_log_file_path( 'genoapay' ) . '</code>' ),
 			),
-			'display_in_modal' => array(
-				'title'       => __( 'Display in modal', 'wc-genoapay' ),
-				'label'       => __( 'Enable modal Checkout', 'wc-genoapay' ),
-				'type'        => 'checkbox',
-				'description' => __( 'If enabled, open genoapay payment in modal instead of redirect to the page.', 'wc-genoapay' ),
-				'default'     => 'no',
-			),
+//			'display_in_modal' => array(
+//				'title'       => __( 'Display in modal', 'wc-genoapay' ),
+//				'label'       => __( 'Enable modal Checkout', 'wc-genoapay' ),
+//				'type'        => 'checkbox',
+//				'description' => __( 'If enabled, open genoapay payment in modal instead of redirect to the page.', 'wc-genoapay' ),
+//				'default'     => 'no',
+//			),
 			'title' => array(
 				'title'       => __( 'Title', 'wc-genoapay' ),
 				'type'        => 'text',

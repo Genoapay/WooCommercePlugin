@@ -26,7 +26,7 @@ class WooCommerce_Gateway_Genoapay_API_Handler {
 	 *
 	 * @var string
 	 */
-	private static $sandbox_endpoint = 'https://sandbox-api.genoapay.com/v1';
+	private static $sandbox_endpoint = 'https://api.uat.genoapay.com/v1';
 
 	/**
 	 * API Client Key

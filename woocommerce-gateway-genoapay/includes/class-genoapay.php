@@ -52,7 +52,13 @@ if ( ! class_exists( 'Genoapay' ) ) {
 			$genoapay_gateway = new WooCommerce_Gateway_Genoapay();
 			$minimum_amount = $genoapay_gateway->getMinimumAmount();
 			$maximum_amount = $genoapay_gateway->getMaximumAmount();
-			$product_price = $product->get_price();
+
+            try {
+                $product_price = $product->get_price();
+            } catch (Exception $e) {
+                $product_price = 0;
+            }
+
 			if ( $genoapay_gateway->validate_currency() ) :
 			?>
 				<div class="genoapay-product-payment-details">

@@ -20,7 +20,7 @@ class WooCommerce_Gateway_Genoapay_Request {
 	 * @param  WC_Order $order woocommerce order.
 	 * @return string
 	 */
-	public function get_request_url( $order, $display_in_modal ) {
+	public function get_request_url( $order ) {
 		WooCommerce_Gateway_Genoapay_API_Handler::post_token();
 
 		if ( WooCommerce_Gateway_Genoapay_API_Handler::get_auth_token() ) {
@@ -33,7 +33,6 @@ class WooCommerce_Gateway_Genoapay_Request {
 			$return_url = add_query_arg( array(
 							'wc-api' => 'WooCommerce_Gateway_LatitudePay',
 							'_wpnonce' => $nonce,
-							'display-in-modal' => $display_in_modal,
 			), home_url( '/' ) );
 
 			$line_items_desc = array();

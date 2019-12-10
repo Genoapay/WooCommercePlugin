@@ -89,14 +89,8 @@ class WooCommerce_Gateway_Genoapay_IPN_Handler {
 					$redirect_url = esc_url_raw( $order->get_cancel_order_url_raw() );
 				}
 
-				if( ! $request['display-in-modal'] ) {
-					wp_safe_redirect( $redirect_url );
-				} else { ?>
-					<script type="text/javascript">
-						window.top.location.href = '<?php echo $redirect_url; ?>';
-					</script>
-				<?php
-				}
+				wp_safe_redirect( $redirect_url );
+
 			}// End if().
 			exit();
 		} catch(Exception $e) {

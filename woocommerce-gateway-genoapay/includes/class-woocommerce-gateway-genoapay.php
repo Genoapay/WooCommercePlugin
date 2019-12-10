@@ -130,27 +130,27 @@ class WooCommerce_Gateway_Genoapay extends WC_Payment_Gateway {
 			return;
 		}
 
-		if ( $this->display_in_modal ) {
-			wp_dequeue_script( 'wc-checkout' );
-			wp_register_script( 'genoapay-script', GENOAPAY_PLUGIN_URL . 'assets/js/genoapay-checkout.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), GENOAPAY_VERSION );
-
-			$translation_array = array(
-					'ajax_url'                  => WC()->ajax_url(),
-					'wc_ajax_url'               => WC_AJAX::get_endpoint( "%%endpoint%%" ),
-					'update_order_review_nonce' => wp_create_nonce( 'update-order-review' ),
-					'apply_coupon_nonce'        => wp_create_nonce( 'apply-coupon' ),
-					'remove_coupon_nonce'       => wp_create_nonce( 'remove-coupon' ),
-					'option_guest_checkout'     => get_option( 'woocommerce_enable_guest_checkout' ),
-					'checkout_url'              => WC_AJAX::get_endpoint( "checkout" ),
-					'is_checkout'               => is_page( wc_get_page_id( 'checkout' ) ) && empty( $wp->query_vars['order-pay'] ) && ! isset( $wp->query_vars['order-received'] ) ? 1 : 0,
-					'debug_mode'                => defined( 'WP_DEBUG' ) && WP_DEBUG,
-					'i18n_checkout_error'       => esc_attr__( 'Error processing checkout. Please try again.', 'woocommerce' ),
-				);
-			wp_localize_script( 'genoapay-script', 'wc_checkout_params', $translation_array );
-
-			// Enqueued script with localized data.
-			wp_enqueue_script( 'genoapay-script' );
-		}
+//		if ( $this->display_in_modal ) {
+//			wp_dequeue_script( 'wc-checkout' );
+//			wp_register_script( 'genoapay-script', GENOAPAY_PLUGIN_URL . 'assets/js/genoapay-checkout.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), GENOAPAY_VERSION );
+//
+//			$translation_array = array(
+//					'ajax_url'                  => WC()->ajax_url(),
+//					'wc_ajax_url'               => WC_AJAX::get_endpoint( "%%endpoint%%" ),
+//					'update_order_review_nonce' => wp_create_nonce( 'update-order-review' ),
+//					'apply_coupon_nonce'        => wp_create_nonce( 'apply-coupon' ),
+//					'remove_coupon_nonce'       => wp_create_nonce( 'remove-coupon' ),
+//					'option_guest_checkout'     => get_option( 'woocommerce_enable_guest_checkout' ),
+//					'checkout_url'              => WC_AJAX::get_endpoint( "checkout" ),
+//					'is_checkout'               => is_page( wc_get_page_id( 'checkout' ) ) && empty( $wp->query_vars['order-pay'] ) && ! isset( $wp->query_vars['order-received'] ) ? 1 : 0,
+//					'debug_mode'                => defined( 'WP_DEBUG' ) && WP_DEBUG,
+//					'i18n_checkout_error'       => esc_attr__( 'Error processing checkout. Please try again.', 'woocommerce' ),
+//				);
+//			wp_localize_script( 'genoapay-script', 'wc_checkout_params', $translation_array );
+//
+//			// Enqueued script with localized data.
+//			wp_enqueue_script( 'genoapay-script' );
+//		}
 	}
 
 	/**

@@ -65,12 +65,12 @@ if ( ! class_exists('LatitudePay') ) {
 					<?php if ($product_price < $minimum_amount || $product_price > $maximum_amount) { ?>
 						<div class="genoapay-message">Installments available between <b>$<?php echo number_format($minimum_amount); ?></b> - <b>$<?php echo number_format($maximum_amount); ?></b>
 							with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
-							<a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+							<a href="https://latitudepay.com/" target="_blank"><i>What's this?</i></a>
 						</div>
 					<?php } else { ?>
 						<div class="genoapay-message">Or 10 Interest free payments from <b>$<?php echo number_format( (float) self::round_up( $product_price / 10, 2), 2, '.', ''); ?></b>
 							with <img src="<?php echo GENOAPAY_PLUGIN_URL . 'assets/images/latitudepay_100.png';?>" alt="LatitudePay logo" itemprop="logo">
-							<a href="https://genoapay.com/" target="_blank"><i>What's this?</i></a>
+							<a href="https://latitudepay.com/" target="_blank"><i>What's this?</i></a>
 						</div>
 					<?php } ?>
 				</div>
